@@ -1,11 +1,6 @@
-def quick_short(array):
-    if len(array) < 2:
-        return array
-    else:
-        pivot = array[(len(array) - 1) // 2]
-        less = [i for i in array if i < pivot]
-        greater = [x for x in array if x > pivot]
-        return quick_short(less) + [pivot] + quick_short(greater)
+import json
+
+with open("data.json","r") as file:
+    data = json.load(file)
     
-tableau = [45,12,56,98,1]
-print(quick_short(tableau))
+print(data['projets'])
