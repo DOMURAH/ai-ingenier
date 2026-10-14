@@ -1,19 +1,31 @@
-from dataclasses import dataclass
-import os
+from collections import deque
 
-@dataclass
-class Temporary_folder:
-    new_way : str
-    old_way : str = os.getcwd()
-    
-    def __enter__(self):
-        if not os.path.exists(self.new_way):
-            os.mkdir(self.new_way)
-        os.chdir(self.new_way)
-        
-    def __exit__(self, exc_type, exc, tb):
-        os.chdir(self.old_way)
-        os.system("echo 'Le teste a reussie ! ' > retour.txt")
-        
-with Temporary_folder("FICHIER") as t:
-    os.system("touch test.txt")
+def large_name(name):
+    return len(name) >= 7
+
+
+graph = {}
+graph['Domurah'] = ['Elinoh','Toussin',"Fitahiana"]
+graph['Elinoh'] = ['TenchBoy','Alex','Mouta']
+graph['Toussin'] = ['Olivia']
+graph['Fitahiana'] = ['Onja','Ryan']
+graph['TenchBoy'] = []
+graph['Alex'] = []
+graph['Mouta'] = []
+graph['Olivia'] = []
+graph['Onja'] = []
+graph['Ryan'] = []
+
+struct = deque()
+struct += graph['Domurah']
+
+while struct:
+    visited = set()
+    person = struct.popleft()
+    if person not in visited:
+        if large_name(person):
+            print(f"Personne avec un nom longue trouvé : {person} !")
+            break
+        else:
+            struct += graph[person]
+            visited.add(person)
