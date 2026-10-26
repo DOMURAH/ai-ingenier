@@ -3,7 +3,6 @@ from collections import deque
 def large_name(name):
     return len(name) >= 7
 
-
 graph = {}
 graph['Domurah'] = ['Elinoh','Toussin',"Fitahiana"]
 graph['Elinoh'] = ['TenchBoy','Alex','Mouta']

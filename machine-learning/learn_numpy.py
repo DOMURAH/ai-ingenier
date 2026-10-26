@@ -1,12 +1,8 @@
 import numpy as np
 
-number = np.random.randn(20)
+y_true = np.array([1,0,1])
+y_pred = np.array([1,0,1])
 
-A = np.random.rand(3,2)
-B = np.random.rand(2,3)
+MSE = np.mean((y_true - y_pred) ** 2)
 
-print(number)
-print(number[number >= 0])
-
-matrice = number.reshape(4,5)
-print(matrice)
+print(MSE)

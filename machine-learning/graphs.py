@@ -6,6 +6,7 @@ class Solution(object):
         largest = None
         x = 0 
         while x < k:
+            
             maximum = max(copy_nums)
             largest = maximum
             copy_nums.remove(maximum)
